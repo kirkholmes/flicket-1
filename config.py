@@ -27,17 +27,21 @@ class BaseConfiguration(object):
     db_username = config_data['db_username']
     db_password = config_data['db_password']
     # database connection details
-    db_url = config_data['db_url']
-    db_port = config_data['db_port']
+    db_account = config_data['db_account']
     db_name = config_data['db_name']
-    db_type = 'mysql+pymysql'
+    db_schema = config_data['db_schema']
+    db_warehouse = config_data['db_warehouse']
+    db_role = config_data['db_role']
+    db_type = 'snowflake'
 
-    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}'.format(db_type,
+    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}/{}/{}?warehouse={}&role={}'.format(db_type,
                                                            db_username,
                                                            db_password,
-                                                           db_url,
-                                                           db_port,
-                                                           db_name)
+                                                           db_account,
+                                                           db_name,
+                                                           db_schema,
+                                                           db_warehouse,
+                                                           db_role)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     # default flicket_admin group name

@@ -74,9 +74,11 @@ class WriteConfigJson:
             if all(validity):
                 valid = True
 
-        db_url = input('Enter database url (don\'t include port). If running locally this would be localhost: ')
-        db_port = input('Enter database port: ')
-        db_name = input('Enter database name: ')
+ db_account = input('Enter Snowflake Account: ')
+        db_name = input('Enter Database Name: ')
+        db_schema = input('Enter Schema: ')
+        db_warehouse = input('Enter Warehouse: ')
+        db_role = input('Enter Role Name: ')
 
         secret_key = random_string()
         notification_user_password = random_string()
@@ -84,9 +86,11 @@ class WriteConfigJson:
         config_values = {
             'db_username': db_username,
             'db_password': db_password,
-            'db_url': db_url,
-            'db_port': db_port,
+            'db_account': db_account,
             'db_name': db_name,
+            'db_schema': db_schema,
+            'db_warehouse': db_warehouse,
+            'db_role': db_role,
             'SECRET_KEY': secret_key,
             'NOTIFICATION_USER_PASSWORD': notification_user_password
         }
